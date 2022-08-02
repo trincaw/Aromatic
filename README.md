@@ -26,4 +26,4 @@ A cli interface to run and show result of queries
 |              | Build                |
 |-------------:|----------------------|
 | OS           | Arch Linux (rolling) 64bit  |
-| DBMS         | Postgresql 14        |
+| DBMS         | Postgre sql 14        |
