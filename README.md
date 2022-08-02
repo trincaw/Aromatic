@@ -5,7 +5,7 @@
 
 ## Description
 
-TheFragrancesDb is a sql relational database of an scent industry. TheFragrancesDb's purpose is to be easy to use, stable, light and accurate.
+TheFragrancesDb is a sql relational database of a scent industry. TheFragrancesDb's purpose is to be easy to use, stable, light and accurate.
 
 ## Features
 
