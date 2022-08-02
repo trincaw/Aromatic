@@ -1,6 +1,6 @@
 <h1 align="center">The Fragrances Db</h1>
 <p align="center"> TheFragrancesDb® is an open-source database of an perfume</p>
-<h3 align="center"><img src="https://i.imgur.com/cDGc8FR.jpeg" alt="logo" height="100px"></h3>
+<h3 align="center"><img src="https://i.imgur.com/7XeAvxJ.jpeg" alt="logo" height="100px"></h3>
 
 
 ## Description
