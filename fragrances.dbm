@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.0.0-alpha1" use-changelog="false" last-position="870,927" last-zoom="1.3" max-obj-count="14"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<tag name="piselol">
+	<style id="table-body" colors="#474f56,#474f56,#595e61"/>
+	<style id="table-ext-body" colors="#474f56,#474f56,#595e61"/>
+	<style id="table-name" colors="#000000"/>
+	<style id="table-schema-name" colors="#000000"/>
+	<style id="table-title" colors="#3275b0,#6ec0ff,#77cbff"/>
+	<style id="table-toggler-body" colors="#474f56,#474f56,#595e61"/>
+	<style id="table-toggler-btns" colors="#3275b0,#6ec0ff,#77cbff"/>
+</tag>
+<table name="Fragrance" layers="0" collapse-mode="2" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<position x="1180" y="1320"/>
+	<column name="Collection" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="Year">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="Gender" not-null="true">
+		<type name="varchar" length="6"/>
+	</column>
+
+	<customidxs object-type="column">
+		<object name="Name_Concentration" index="5"/>
+		<object name="Name_Designer" index="0"/>
+		<object name="Name_Perfumer" index="6"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Concentration_fk" index="2"/>
+		<object name="Designer_fk" index="1"/>
+		<object name="Fragrance_pk" index="0"/>
+		<object name="Perfumer_fk" index="3"/>
+	</customidxs>
+</table>
+
+<table name="Concentration" layers="0" collapse-mode="1" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<position x="1800" y="1420"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="15"/>
+	</column>
+	<column name="Min">
+		<type name="decimal" length="5" precision="2"/>
+	</column>
+	<column name="Max">
+		<type name="decimal" length="5" precision="2"/>
+	</column>
+	<constraint name="Concentration_pk" type="pk-constr" table="public.&quot;Concentration&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+	<initial-data>
+<![CDATA[Name•Min•Max⸣
+Eau de Cologne•3•5⸣
+Eau de Toilette•12•15⸣
+Eau de Parfum•15•20⸣
+Perfume Extract •20•30]]>
+	</initial-data>
+</table>
+
+<table name="Designer" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<position x="1200" y="640"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<column name="Website">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Designer_pk" type="pk-constr" table="public.&quot;Designer&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Company" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<position x="700" y="700"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Company_pk" type="pk-constr" table="public.&quot;Company&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Country" layers="0" collapse-mode="2" max-obj-count="1" z-value="0">
+	<schema name="public"/>
+	<position x="1000" y="440"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Country_pk" type="pk-constr" table="public.&quot;Country&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Country_has_many_Designer" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#d06f8b"
+	 src-table="public.&quot;Country&quot;"
+	 dst-table="public.&quot;Designer&quot;"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="43.266" y="-23.953"/>
+	</label>
+</relationship>
+
+<relationship name="Country_has_many_Company" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#757d24"
+	 src-table="public.&quot;Country&quot;"
+	 dst-table="public.&quot;Company&quot;"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-36.9482" y="-23.953"/>
+	</label>
+</relationship>
+
+<relationship name="Company_has_many_Designer" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#7bb3e9"
+	 src-table="public.&quot;Company&quot;"
+	 dst-table="public.&quot;Designer&quot;"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+</relationship>
+
+<relationship name="Designer_has_many_Fragrance" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#bb5a9a"
+	 src-table="public.&quot;Designer&quot;"
+	 dst-table="public.&quot;Fragrance&quot;"
+	 src-required="true" dst-required="false">
+	<constraint name="Fragrance_pk" type="pk-constr" table="public.&quot;Fragrance&quot;">
+		<columns names="Collection,Name" ref-type="src-columns"/>
+	</constraint>
+	<special-pk-cols indexes="0"/>
+</relationship>
+
+<relationship name="Concentration_has_many_Fragrance" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#46b699"
+	 src-table="public.&quot;Concentration&quot;"
+	 dst-table="public.&quot;Fragrance&quot;"
+	 src-required="true" dst-required="false"/>
+
+<table name="Industry" layers="0" collapse-mode="2" max-obj-count="1" z-value="0">
+	<schema name="public"/>
+	<position x="1760" y="700"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Industry_pk" type="pk-constr" table="public.&quot;Industry&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Industry_has_many_Designer" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#647924"
+	 src-table="public.&quot;Industry&quot;"
+	 dst-table="public.&quot;Designer&quot;"
+	 src-required="true" dst-required="false"/>
+
+<table name="Perfumer" layers="0" collapse-mode="2" max-obj-count="1" z-value="0">
+	<schema name="public"/>
+	<position x="360" y="1240"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Perfumer_pk" type="pk-constr" table="public.&quot;Perfumer&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Perfumer_has_many_Fragrance" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#d436b5"
+	 src-table="public.&quot;Perfumer&quot;"
+	 dst-table="public.&quot;Fragrance&quot;"
+	 src-required="true" dst-required="false">
+	<label ref-type="name-label">
+		<position x="-40.9671" y="-85.816"/>
+	</label>
+</relationship>
+
+<table name="new_table" layers="0" collapse-mode="2" max-obj-count="0" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="2440" y="1700"/>
+</table>
+
+<table name="Notes" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<position x="560" y="1400"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Top_notes_pk" type="pk-constr" table="public.&quot;Notes&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Group" layers="0" collapse-mode="2" max-obj-count="1" z-value="0">
+	<schema name="public"/>
+	<position x="180" y="1420"/>
+	<column name="Name" not-null="true">
+		<type name="varchar" length="30"/>
+	</column>
+	<constraint name="Group_pk" type="pk-constr" table="public.&quot;Group&quot;">
+		<columns names="Name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Group_has_many_Notes" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#defee6"
+	 src-table="public.&quot;Group&quot;"
+	 dst-table="public.&quot;Notes&quot;"
+	 src-required="true" dst-required="false"/>
+
+<relationship name="Top_notes" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#1dcf42"
+	 src-table="public.&quot;Notes&quot;"
+	 dst-table="public.&quot;Fragrance&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="Top_notes">
+	<label ref-type="name-label">
+		<position x="-106.958" y="-0.13477"/>
+	</label>
+</relationship>
+
+<relationship name="Middle_notes" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#904ce8"
+	 src-table="public.&quot;Notes&quot;"
+	 dst-table="public.&quot;Fragrance&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="Middle_notes">
+	<label ref-type="name-label">
+		<position x="-57.9584" y="-16.7437"/>
+	</label>
+</relationship>
+
+<relationship name="Base_notes" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#8911f2"
+	 src-table="public.&quot;Notes&quot;"
+	 dst-table="public.&quot;Fragrance&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="Base_notes">
+	<label ref-type="name-label">
+		<position x="-103.458" y="-13.3526"/>
+	</label>
+</relationship>
+
+<table name="Factory" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1520" y="440"/>
+	<column name="Nome">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="Id" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="Factory_pk" type="pk-constr" table="public.&quot;Factory&quot;">
+		<columns names="Id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="Factory_has_many_Designer" type="rel1n" layers="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#ba32c8"
+	 src-table="public.&quot;Factory&quot;"
+	 dst-table="public.&quot;Designer&quot;"
+	 src-required="true" dst-required="false"/>
+
+</dbmodel>
