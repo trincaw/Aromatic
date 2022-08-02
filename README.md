@@ -1,5 +1,5 @@
 <h1 align="center">The Fragrances Db</h1>
-<p align="center"> TheFragrancesDb® is an open-source database of an perfume</p>
+<p align="center"> TheFragrancesDb® is an open source perfume database</p>
 <h3 align="center"><img src="https://i.imgur.com/7XeAvxJ.jpeg" alt="logo" height="100px"></h3>
 
 
