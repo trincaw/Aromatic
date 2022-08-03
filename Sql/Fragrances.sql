@@ -21,7 +21,7 @@ CREATE TABLE Country (
 
 CREATE TABLE Company (
 	Name varchar(30),
-	Name_Country varchar(50) NOT NULL,
+	Name_Country varchar(50),
 	Description varchar(200) NOT NULL,
 	PRIMARY KEY (Name),
 	FOREIGN KEY (Name_Country) REFERENCES Country(Name) ON UPDATE cascade ON DELETE SET NULL
@@ -41,10 +41,10 @@ CREATE TABLE Factory (
 CREATE TABLE Designer (
 	Name varchar(30),
 	Website varchar(50),
-	Name_Country varchar(30) NOT NULL,
-	Name_Company varchar(30) NOT NULL,
-	Name_Industry varchar(30) NOT NULL,
-	Id_Factory int NOT NULL,
+	Name_Country varchar(30),
+	Name_Company varchar(30),
+	Name_Industry varchar(30),
+	Id_Factory int,
 	PRIMARY KEY (Name),
 	FOREIGN KEY (Name_Company) REFERENCES Company(Name) ON UPDATE cascade ON DELETE SET NULL,
 	FOREIGN KEY (Name_Country) REFERENCES Country(Name) ON UPDATE cascade ON DELETE SET NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Fragrance (
 	Gender varchar(6) NOT NULL,
 	Name_Designer varchar(30),
 	Name_Concentration varchar(15),
-	CF_Perfumer varchar(30) NOT NULL,
+	CF_Perfumer varchar(30),
 	PRIMARY KEY (Name,Name_Designer,Name_Concentration),
 	FOREIGN KEY (Name_Concentration) REFERENCES Concentration(Name) ON UPDATE cascade ON DELETE SET NULL,
 	FOREIGN KEY (Name_Designer) REFERENCES Designer(Name) ON UPDATE cascade ON DELETE SET NULL,
@@ -88,7 +88,7 @@ CREATE TABLE OlfactoryGroup (
 
 CREATE TABLE Notes (
 	Name varchar(30),
-	Name_OlfactoryGroup varchar(30) NOT NULL,
+	Name_OlfactoryGroup varchar(30),
 	PRIMARY KEY (Name),
 	FOREIGN KEY (Name_OlfactoryGroup) REFERENCES OlfactoryGroup(Name) ON UPDATE cascade ON DELETE SET NULL
 );
