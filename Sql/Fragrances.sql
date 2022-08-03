@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS Base_notes CASCADE;
 DROP TABLE IF EXISTS Factory CASCADE;
 
 CREATE TABLE Country (
-	Name varchar(50) NOT NULL,
+	Name varchar(50),
 	PRIMARY KEY (Name)
 );
 
