@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS Base_notes CASCADE;
 DROP TABLE IF EXISTS Factory CASCADE;
 
 CREATE TABLE Country (
-	Name varchar(30) NOT NULL,
+	Name varchar(50) NOT NULL,
 	PRIMARY KEY (Name)
 );
 
@@ -118,5 +118,3 @@ CREATE TABLE Base_notes (
 	FOREIGN KEY (Name_Notes) REFERENCES Notes(Name) ON UPDATE cascade ON DELETE SET NULL,
 	FOREIGN KEY (Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Collection,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
 );
-
-/* POPOLAZIONE */
