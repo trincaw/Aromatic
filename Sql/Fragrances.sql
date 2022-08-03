@@ -21,7 +21,8 @@ CREATE TABLE Country (
 
 CREATE TABLE Company (
 	Name varchar(30) NOT NULL,
-	Name_Country varchar(30) NOT NULL,
+	Name_Country varchar(50) NOT NULL,
+	Description varchar(200) NOT NULL,
 	PRIMARY KEY (Name),
 	FOREIGN KEY (Name_Country) REFERENCES Country(Name) ON UPDATE cascade ON DELETE SET NULL
 );
@@ -33,17 +34,17 @@ CREATE TABLE Industry (
 
 CREATE TABLE Factory (
 	Nome smallint,
-	Id smallint NOT NULL,
+	Id int,
 	PRIMARY KEY (Id)
 );
 
 CREATE TABLE Designer (
 	Name varchar(30) NOT NULL,
-	Website varchar(30),
+	Website varchar(50),
 	Name_Country varchar(30) NOT NULL,
 	Name_Company varchar(30) NOT NULL,
 	Name_Industry varchar(30) NOT NULL,
-	Id_Factory smallint NOT NULL,
+	Id_Factory int NOT NULL,
 	PRIMARY KEY (Name),
 	FOREIGN KEY (Name_Company) REFERENCES Company(Name) ON UPDATE cascade ON DELETE SET NULL,
 	FOREIGN KEY (Name_Country) REFERENCES Country(Name) ON UPDATE cascade ON DELETE SET NULL,
@@ -53,68 +54,71 @@ CREATE TABLE Designer (
 
 CREATE TABLE Concentration (
 	Name varchar(15) NOT NULL,
-	Min decimal(5,2),
-	Max decimal(5,2),
+	Min int,
+	Max int,
 	PRIMARY KEY (Name)
 );
 
 CREATE TABLE Perfumer (
 	Name varchar(30) NOT NULL,
-	PRIMARY KEY (Name)
+	CF varchar(16) NOT NULL,
+	Website varchar(30) NOT NULL,
+	PRIMARY KEY (CF)
 );
 
 CREATE TABLE Fragrance (
-	Collection varchar(30) NOT NULL,
+	Collection varchar(30),
 	Name varchar(30) NOT NULL,
-	Year smallint,
+	Year smallint NOT NULL,
 	Gender varchar(6) NOT NULL,
 	Name_Designer varchar(30) NOT NULL,
 	Name_Concentration varchar(15) NOT NULL,
-	Name_Perfumer varchar(30) NOT NULL,
-	PRIMARY KEY (Collection,Name,Name_Designer),
+	CF_Perfumer varchar(30) NOT NULL,
+	PRIMARY KEY (Name,Name_Designer,Name_Concentration),
 	FOREIGN KEY (Name_Concentration) REFERENCES Concentration(Name) ON UPDATE cascade ON DELETE SET NULL,
 	FOREIGN KEY (Name_Designer) REFERENCES Designer(Name) ON UPDATE cascade ON DELETE SET NULL,
-	FOREIGN KEY (Name_Perfumer) REFERENCES Perfumer(Name) ON UPDATE cascade ON DELETE SET NULL
+	FOREIGN KEY (CF_Perfumer) REFERENCES Perfumer(CF) ON UPDATE cascade ON DELETE SET NULL
 );
 
-CREATE TABLE MainGroup (
+CREATE TABLE OlfactoryGroup (
 	Name varchar(30) NOT NULL,
+	Description varchar(200) NOT NULL,
 	PRIMARY KEY (Name)
 );
 
 CREATE TABLE Notes (
 	Name varchar(30) NOT NULL,
-	Name_MainGroup varchar(30) NOT NULL,
+	Name_OlfactoryGroup varchar(30) NOT NULL,
 	PRIMARY KEY (Name),
-	FOREIGN KEY (Name_MainGroup) REFERENCES MainGroup(Name) ON UPDATE cascade ON DELETE SET NULL
+	FOREIGN KEY (Name_OlfactoryGroup) REFERENCES OlfactoryGroup(Name) ON UPDATE cascade ON DELETE SET NULL
 );
 
 CREATE TABLE Top_notes (
 	Name_Notes varchar(30) NOT NULL,
-	Collection_Fragrance varchar(30) NOT NULL,
+	Name_Concentration varchar(30) NOT NULL,
 	Name_Fragrance varchar(30) NOT NULL,
 	Name_Designer_Fragrance varchar(30) NOT NULL,
-	PRIMARY KEY (Name_Notes,Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance),
+	PRIMARY KEY (Name_Notes,Name_Concentration,Name_Fragrance,Name_Designer_Fragrance),
 	FOREIGN KEY (Name_Notes) REFERENCES Notes(Name) ON UPDATE cascade ON DELETE SET NULL,
-	FOREIGN KEY (Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Collection,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
+	FOREIGN KEY (Name_Concentration,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Concentration,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
 );
 
 CREATE TABLE Middle_notes (
 	Name_Notes varchar(30) NOT NULL,
-	Collection_Fragrance varchar(30) NOT NULL,
+	Name_Concentration varchar(30) NOT NULL,
 	Name_Fragrance varchar(30) NOT NULL,
 	Name_Designer_Fragrance varchar(30) NOT NULL,
-	PRIMARY KEY (Name_Notes,Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance),
+	PRIMARY KEY (Name_Notes,Name_Concentration,Name_Fragrance,Name_Designer_Fragrance),
 	FOREIGN KEY (Name_Notes) REFERENCES Notes(Name) ON UPDATE cascade ON DELETE SET NULL,
-	FOREIGN KEY (Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Collection,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
+	FOREIGN KEY (Name_Concentration,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Concentration,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
 );
 
 CREATE TABLE Base_notes (
 	Name_Notes varchar(30) NOT NULL,
-	Collection_Fragrance varchar(30) NOT NULL,
+	Name_Concentration varchar(30) NOT NULL,
 	Name_Fragrance varchar(30) NOT NULL,
 	Name_Designer_Fragrance varchar(30) NOT NULL,
-	PRIMARY KEY (Name_Notes,Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance),
+	PRIMARY KEY (Name_Notes,Name_Concentration,Name_Fragrance,Name_Designer_Fragrance),
 	FOREIGN KEY (Name_Notes) REFERENCES Notes(Name) ON UPDATE cascade ON DELETE SET NULL,
-	FOREIGN KEY (Collection_Fragrance,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Collection,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
+	FOREIGN KEY (Name_Concentration,Name_Fragrance,Name_Designer_Fragrance)REFERENCES Fragrance (Concentration,Name,Name_Designer) ON UPDATE cascade ON DELETE SET NULL
 );
