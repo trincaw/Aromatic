@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
  Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="1.0.0-alpha1" use-changelog="false" last-position="870,927" last-zoom="1.3" max-obj-count="14"
+<dbmodel pgmodeler-ver="1.0.0-alpha1" use-changelog="false" last-position="0,227" last-zoom="0.65" max-obj-count="14"
 	 default-schema="public" default-owner="postgres"
 	 layers="Default layer"
 	 active-layers="0"
@@ -220,12 +220,6 @@ Perfume Extract •20•30]]>
 		<position x="-40.9671" y="-85.816"/>
 	</label>
 </relationship>
-
-<table name="new_table" layers="0" collapse-mode="2" max-obj-count="0" z-value="0">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="2440" y="1700"/>
-</table>
 
 <table name="Notes" layers="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
