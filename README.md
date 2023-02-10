@@ -32,3 +32,8 @@ A cli interface to run and show result of queries
 |-------------:|----------------------|
 | OS           | Arch Linux (rolling) 64bit  |
 | DBMS         | Postgre sql 14        |
+
+## Execution
+```console
+g++ query.cpp -L dependencies\lib -lpq -o mycodefile
+```
