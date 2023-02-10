@@ -5,7 +5,11 @@
 
 ## Description
 
-Aromatic is a sql relational database of a scent industry. Aromatic's purpose is to be easy to use, stable, light and accurate.
+Aromatic is the premier database solution for the fragrance industry. With its user-friendly interface and robust feature set, it's the perfect tool for managing and organizing your perfume collection. Whether you're a professional perfumer, a retail store, or simply someone with a passion for fragrance, Aromatic has everything you need to stay on top of your game.
+
+Purposes are to be easy to use, stable, light and accurate.
+
+
 https://drive.google.com/file/d/16zOewFdKMfhKeqwA6-R9iHoNnSvqrw5p/view?usp=sharing
 
 ## Features
