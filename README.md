@@ -1,11 +1,11 @@
-<h1 align="center">The Fragrances Db</h1>
-<p align="center"> TheFragrancesDb® is an open source perfume database</p>
+<h1 align="center">Aromatic</h1>
+<p align="center"> Aromatic® is an open source perfume database</p>
 <h3 align="center"><img src="https://i.imgur.com/7XeAvxJ.jpeg" alt="logo" height="100px"></h3>
 
 
 ## Description
 
-TheFragrancesDb is a sql relational database of a scent industry. TheFragrancesDb's purpose is to be easy to use, stable, light and accurate.
+Aromatic is a sql relational database of a scent industry. Aromatic's purpose is to be easy to use, stable, light and accurate.
 https://drive.google.com/file/d/16zOewFdKMfhKeqwA6-R9iHoNnSvqrw5p/view?usp=sharing
 
 ## Features
